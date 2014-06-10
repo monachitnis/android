@@ -1,0 +1,185 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tvEnterTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/enter_total"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etEnterTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEnterTotal"
+        android:layout_toRightOf="@+id/ivSadFace"
+        android:ems="10"
+        android:inputType="number|numberDecimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvDollarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etEnterTotal"
+        android:layout_alignBottom="@+id/etEnterTotal"
+        android:layout_toLeftOf="@+id/etEnterTotal"
+        android:text="$"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvSelectPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etEnterTotal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/tip_percent"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <SeekBar
+        android:id="@+id/skSelectPercent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvSelectPercent"
+        android:layout_alignRight="@+id/etEnterTotal"
+        android:layout_below="@+id/tvSelectPercent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp" />
+
+    <ImageView
+        android:id="@+id/ivSadFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/skSelectPercent"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_emoticon" />
+
+    <ImageView
+        android:id="@+id/ivNeutralFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivSadFace"
+        android:layout_toRightOf="@+id/ivSadFace"
+        android:src="@drawable/ic_emoticon1" />
+
+    <ImageView
+        android:id="@+id/ivSmileFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvSplitPeople"
+        android:layout_toRightOf="@+id/ivNeutralFace"
+        android:src="@drawable/ic_emoticon2" />
+
+    <ImageView
+        android:id="@+id/ivHappyFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvSplitPeople"
+        android:layout_toRightOf="@+id/ivSmileFace"
+        android:src="@drawable/ic_emoticon3" />
+
+    <TextView
+        android:id="@+id/tvSplitPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivSadFace"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/split_people"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etSplitPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/etEnterTotal"
+        android:layout_alignTop="@+id/tvSplitPeople"
+        android:layout_toRightOf="@+id/tvSplitPeople"
+        android:layout_marginLeft="5dp"
+        android:inputType="number" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvDisplayPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/skSelectPercent"
+        android:layout_alignTop="@+id/skSelectPercent"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@+id/skSelectPercent"
+        android:textStyle="bold"
+        android:textSize="15sp" />
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etSplitPeople"
+        android:layout_marginTop="15dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/layout_border" >
+
+        <TextView
+            android:id="@+id/tvTotalTipLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/total_tip"
+            android:textSize="20sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tvTotalTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvTotalTipLabel"
+            android:layout_alignTop="@+id/tvTotalTipLabel"
+            android:layout_toRightOf="@+id/tvTotalTipLabel"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tvSplitTipLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvTotalTipLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvTotalTip"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/split_tip"
+            android:textSize="20sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tvSplitTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvSplitTipLabel"
+            android:layout_alignTop="@+id/tvSplitTipLabel"
+            android:layout_toRightOf="@+id/tvSplitTipLabel"
+            android:layout_marginLeft="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </RelativeLayout>
+
+</RelativeLayout>
