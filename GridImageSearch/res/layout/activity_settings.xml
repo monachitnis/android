@@ -1,0 +1,112 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tvAdvancedSearchTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/advanced_search_options"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvAdvancedSearchTitle"
+        android:layout_marginTop="30dp"
+        android:text="@string/image_size"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvSize"
+        android:layout_marginTop="31dp"
+        android:text="@string/image_color"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvColor"
+        android:layout_marginTop="30dp"
+        android:text="@string/image_type"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvType"
+        android:layout_marginTop="31dp"
+        android:text="@string/site_filter"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btSaveSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSite"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Save"
+        android:onClick="onSave" />
+
+    <Spinner
+        android:id="@+id/spSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvSize"
+        android:layout_alignBottom="@+id/tvSize"
+        android:layout_toRightOf="@+id/tvSize"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentRight="true"
+        android:entries="@array/sizes_array" />
+    
+    <Spinner
+        android:id="@+id/spColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvColor"
+        android:layout_alignBottom="@+id/tvColor"
+        android:layout_toRightOf="@+id/tvColor"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentRight="true"
+        android:entries="@array/colors_array" />
+    
+    <Spinner
+        android:id="@+id/spType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvType"
+        android:layout_alignBottom="@+id/tvType"
+        android:layout_toRightOf="@+id/tvType"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentRight="true"
+        android:entries="@array/types_array" />
+
+    <EditText
+        android:id="@+id/etSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btSaveSettings"
+        android:layout_alignBottom="@+id/tvSite"
+        android:layout_alignLeft="@+id/spColor"
+        android:layout_alignTop="@+id/tvSite"
+        android:layout_toRightOf="@+id/tvSite"
+        android:ems="10" >
+
+    </EditText>
+
+</RelativeLayout>
