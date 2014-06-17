@@ -60,8 +60,7 @@
         android:layout_below="@+id/tvSite"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Save"
-        android:onClick="onSave" />
+        android:text="Save" />
 
     <Spinner
         android:id="@+id/spSize"
@@ -72,7 +71,8 @@
         android:layout_toRightOf="@+id/tvSize"
         android:layout_marginLeft="15dp"
         android:layout_alignParentRight="true"
-        android:entries="@array/sizes_array" />
+        android:entries="@array/sizes_array"
+        android:paddingBottom="0dp" />
     
     <Spinner
         android:id="@+id/spColor"
@@ -83,7 +83,8 @@
         android:layout_toRightOf="@+id/tvColor"
         android:layout_marginLeft="15dp"
         android:layout_alignParentRight="true"
-        android:entries="@array/colors_array" />
+        android:entries="@array/colors_array"
+        android:paddingBottom="0dp" />
     
     <Spinner
         android:id="@+id/spType"
@@ -94,7 +95,8 @@
         android:layout_toRightOf="@+id/tvType"
         android:layout_marginLeft="15dp"
         android:layout_alignParentRight="true"
-        android:entries="@array/types_array" />
+        android:entries="@array/types_array"
+        android:paddingBottom="0dp" />
 
     <EditText
         android:id="@+id/etSite"

@@ -14,6 +14,7 @@ public class SettingsActivity extends Activity {
 	Spinner spType;
 	EditText etSite;
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
