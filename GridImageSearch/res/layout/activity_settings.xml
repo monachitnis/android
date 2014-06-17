@@ -107,7 +107,8 @@
         android:layout_alignLeft="@+id/spColor"
         android:layout_alignTop="@+id/tvSite"
         android:layout_toRightOf="@+id/tvSite"
-        android:ems="10" >
+        android:ems="10"
+        android:paddingBottom="3dp" >
 
     </EditText>
 
