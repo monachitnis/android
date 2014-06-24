@@ -53,12 +53,12 @@ public abstract class EndlessScrollListener implements OnScrollListener {
         	Log.d("Twitter", "GREATER, totalcount="+totalItemCount + ",previous="+previousTotalItemCount);
         	//currentIndex = totalItemCount;
         	previousTotalItemCount = totalItemCount;
-        	if (totalItemCount < count) {
+        	/*if (totalItemCount < count) {
         		//continue to load till the count we've set
         		Log.d("MONA", "less than count, load more");
         		loading = true;
         	}
-        	else
+        	else*/
         		loading = false;
         }
 

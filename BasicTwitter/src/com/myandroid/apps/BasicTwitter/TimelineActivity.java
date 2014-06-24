@@ -26,10 +26,10 @@ import eu.erikw.PullToRefreshListView.OnRefreshListener;
 public class TimelineActivity extends Activity {
 	TwitterClient client;
 	TweetArrayAdapter adapter;
-	ArrayList<Tweet> tweets;
 	PullToRefreshListView lvTimeline;
 	long max_id_pointer = 0;
-	int count = 10;
+	long since_id_pointer = 0;
+	int count = 30;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,9 @@ public class TimelineActivity extends Activity {
 		client = TwitterApplication.getRestClient();
 		
 		// initial load
-		populateTimeline(max_id_pointer);
+		populateTimeline(max_id_pointer, since_id_pointer);
 		
-		tweets = new ArrayList<Tweet>();
+		List<Tweet> tweets = new ArrayList<Tweet>();
 		adapter = new TweetArrayAdapter(this, tweets);
 		
 		lvTimeline = (PullToRefreshListView) findViewById(R.id.lvTimeline);
@@ -53,7 +53,7 @@ public class TimelineActivity extends Activity {
 
 			@Override
 			public void onLoadMore() {
-				populateTimeline(max_id_pointer);
+				populateTimeline(max_id_pointer, 1);
 			}
 			
 		});
@@ -74,29 +74,37 @@ public class TimelineActivity extends Activity {
 		lvTimeline.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
-				populateTimeline(max_id_pointer);
+				populateTimeline(0, since_id_pointer);
 				lvTimeline.onRefreshComplete();
 			}
 		});
 
 	}
 
-	public void populateTimeline(final long maxid) {
-		Log.d("Twitter", "fetching tweets from maxid="+maxid);
-		client.getHomeTimeline(maxid, count, new JsonHttpResponseHandler() {
+	public void populateTimeline(final long maxid, final long sinceid) {
+		Log.d("Twitter", "fetching tweets from maxid="+maxid + ",sinceid="+sinceid);
+		client.getHomeTimeline(maxid, count, sinceid, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray json) {
+			    Toast.makeText(TimelineActivity.this, "GET Success!", Toast.LENGTH_SHORT).show();
 				List<Tweet> tweets = Tweet.fromJsonArray(json);
-				if (maxid == 0) {
-					adapter.clear();
-				}
-				if (tweets.size() > 0)
+				if (tweets.size() > 0) {
 					max_id_pointer = tweets.get(tweets.size()-1).getId();
-			    adapter.addAll(tweets);
+					since_id_pointer = tweets.get(0).getId();
+				}
+				if (maxid == 0 && sinceid > 0) {
+					int index = 0;
+					for (Tweet t : tweets) {
+						adapter.insert(t, index++);
+					}
+				} else {
+					adapter.addAll(tweets);
+				}
 			}
 			@Override
 			public void onFailure(Throwable t, JSONObject responseBody) {
-				Toast.makeText(TimelineActivity.this, "Client request FAILED", Toast.LENGTH_LONG).show();
+				Toast.makeText(TimelineActivity.this, "Client GET failed due to Twitter rate limiting",
+					Toast.LENGTH_SHORT).show();
 			}
 		});
 		
@@ -119,13 +127,15 @@ public class TimelineActivity extends Activity {
 		if (resultCode == RESULT_OK)
 			if (requestCode == 50) {
 				//refresh timeline to see posted tweet
-				populateTimeline(1);
+				Toast.makeText(TimelineActivity.this, "after compose sinceid="+since_id_pointer, Toast.LENGTH_SHORT).show();
+				populateTimeline(0, since_id_pointer);
 		}
 	}
 	
 	public void onRefresh(MenuItem mi) {
 		//refresh timeline to see posted tweet
-		populateTimeline(1);
+		Toast.makeText(TimelineActivity.this, "on refresh sinceid="+since_id_pointer, Toast.LENGTH_SHORT).show();
+		populateTimeline(0, since_id_pointer);
 	}
 	
 }
