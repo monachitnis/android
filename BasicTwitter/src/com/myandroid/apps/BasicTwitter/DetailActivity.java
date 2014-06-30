@@ -3,10 +3,12 @@ package com.myandroid.apps.BasicTwitter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.myandroid.apps.BasicTwitter.models.Tweet;
+import com.myandroid.apps.BasicTwitter.models.User;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class DetailActivity extends Activity {
@@ -16,6 +18,7 @@ public class DetailActivity extends Activity {
 	TextView tvName;
 	TextView tvBody;
 	TextView tvTimestamp;
+	User u;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +28,10 @@ public class DetailActivity extends Activity {
 		Intent i = getIntent();
 		Tweet t = (Tweet) i.getSerializableExtra("tweet");
 		ImageLoader loader = ImageLoader.getInstance();
-		loader.displayImage(t.getUser().getProfileImgUrl(), ivProfileImg);
-	    tvHandle.setText(t.getUser().getHandle());
-	    tvName.setText(t.getUser().getName());
+		u = t.getUser();
+		loader.displayImage(u.getProfileImgUrl(), ivProfileImg);
+	    tvHandle.setText(u.getHandle());
+	    tvName.setText(u.getName());
 		tvBody.setText(t.getBody());
 		tvTimestamp.setText(t.getCreatedAt(true));
 		
@@ -40,5 +44,11 @@ public class DetailActivity extends Activity {
 		tvName = (TextView) findViewById(R.id.tvName);
 		tvBody = (TextView) findViewById(R.id.tvBody);
 		tvTimestamp = (TextView) findViewById(R.id.tvTimestamp);
+	}
+	
+	public void onUser(View v) {
+		Intent i = new Intent(this, ProfileActivity.class);
+		i.putExtra("user", u);
+		startActivity(i);
 	}
 }

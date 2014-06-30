@@ -6,10 +6,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_photos">Flickr Photos</string>
     <string name="login_label">Connect to Twitter</string>
-    <string name="title_activity_timeline">Twitter Home</string>
+    <string name="title_activity_timeline">Mona\'s Twitter</string>
     <string name="foo_label">\@foo</string>
     <string name="title_activity_compose">Compose Tweet</string>
     <string name="post_tweet">Post Tweet:</string>
     <string name="title_activity_detail">Tweet Details</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 </resources>

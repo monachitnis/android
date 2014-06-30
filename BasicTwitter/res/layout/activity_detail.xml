@@ -2,6 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
     tools:context="${packageName}.${activityClass}" >
     
     <ImageView
@@ -10,7 +13,8 @@
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:onClick="onUser" />
 
     <TextView
         android:id="@+id/tvName"
@@ -20,7 +24,9 @@
         android:layout_toRightOf="@+id/ivThmb"
         android:text="Dummy User"
         android:textStyle="bold"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:layout_marginLeft="5dp"
+        android:onClick="onUser" />
 
     <TextView
         android:id="@+id/tvBody"
@@ -39,7 +45,8 @@
         android:layout_alignLeft="@+id/tvName"
         android:layout_below="@+id/tvName"
         android:text="@string/foo_label"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:onClick="onUser" />
 
     <TextView
         android:id="@+id/tvTimestamp"

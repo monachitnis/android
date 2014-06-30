@@ -15,13 +15,10 @@ public abstract class EndlessScrollListener implements OnScrollListener {
     private int previousTotalItemCount = 1;
     // True if we are still waiting for the last set of data to load.
     private boolean loading = true;
-    private int count;
-
     public EndlessScrollListener() {
     }
 
     public EndlessScrollListener(int count) {
-        this.count = count;
     }
     
 	@Override
@@ -53,13 +50,7 @@ public abstract class EndlessScrollListener implements OnScrollListener {
         	Log.d("Twitter", "GREATER, totalcount="+totalItemCount + ",previous="+previousTotalItemCount);
         	//currentIndex = totalItemCount;
         	previousTotalItemCount = totalItemCount;
-        	/*if (totalItemCount < count) {
-        		//continue to load till the count we've set
-        		Log.d("MONA", "less than count, load more");
-        		loading = true;
-        	}
-        	else*/
-        		loading = false;
+            loading = false;
         }
 
         // If it isn’t currently loading, we check to see if we have breached
