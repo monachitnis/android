@@ -1,5 +1,7 @@
 package com.myandroid.apps.BasicTwitter;
 
+import java.util.List;
+
 import org.json.JSONObject;
 
 import android.app.ActionBar;
@@ -12,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.activeandroid.query.Delete;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.myandroid.apps.BasicTwitter.fragments.HomeTimelineFragment;
 import com.myandroid.apps.BasicTwitter.fragments.MentionsTimelineFragment;
@@ -21,7 +24,6 @@ import com.myandroid.apps.BasicTwitter.models.Tweet;
 import com.myandroid.apps.BasicTwitter.models.User;
 
 public class TimelineActivity extends FragmentActivity {
-	//private TweetsListFragment tweetsFragment;
 	User u;
 
 	@Override
@@ -29,10 +31,9 @@ public class TimelineActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_timeline);
-		/*tweetsFragment = (TweetsListFragment) getSupportFragmentManager()
-		.findFragmentById(R.id.fragment_timeline);*/
 		
 		setupTabs();
+		
 	}
 	
 	private void setupTabs() {

@@ -26,8 +26,12 @@ public class MentionsTimelineFragment extends TweetsListFragment {
 
 		// initial load
 		List<Tweet> cached = Tweet.getAll(Tweet.Category.MENTIONS_TWEETS);
-		if (cached != null && !cached.isEmpty())
+		if (cached != null && !cached.isEmpty()) {
 			addAll(cached);
+			max_id_pointer = cached.get(cached.size()-1).getId()-1;
+			since_id_pointer = cached.get(0).getId();
+			Log.d("Twitter", "Load offline tweets");
+		}
 		else
 			populateTimeline(max_id_pointer, since_id_pointer);
 	}
@@ -41,7 +45,7 @@ public class MentionsTimelineFragment extends TweetsListFragment {
 
 			@Override
 			public void onLoadMore() {
-				populateTimeline(max_id_pointer, 1);
+				populateTimeline(max_id_pointer, 0);
 			}
 
 		});
@@ -49,6 +53,7 @@ public class MentionsTimelineFragment extends TweetsListFragment {
 		lvTimeline.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
+				adapter.clear();
 				populateTimeline(0, since_id_pointer);
 				lvTimeline.onRefreshComplete();
 			}
@@ -57,15 +62,11 @@ public class MentionsTimelineFragment extends TweetsListFragment {
 	}
 	
 	public void populateTimeline(final long maxid, final long sinceid) {
-		Log.d("Twitter", "fetching tweets from maxid="+maxid + ",sinceid="+sinceid);
+		Log.d("Twitter", "[Mentions]fetching tweets from maxid="+maxid + ",sinceid="+sinceid);
 		client.getMentionsTimeline(maxid, count, sinceid, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray json) {
 				tweets = Tweet.fromJsonArray(json, Tweet.Category.MENTIONS_TWEETS);
-				if (tweets.size() > 0) {
-					max_id_pointer = tweets.get(tweets.size()-1).getId();
-					since_id_pointer = tweets.get(0).getId();
-				}
 				if (maxid == 0 && sinceid > 0) {
 					int index = 0;
 					for (Tweet t : tweets) {
@@ -74,15 +75,16 @@ public class MentionsTimelineFragment extends TweetsListFragment {
 				} else {
 					addAll(tweets);
 				}
+				if (tweets.size() > 0) {
+					max_id_pointer = tweets.get(tweets.size()-1).getId()-1;
+					since_id_pointer = 
+						(tweets.get(0).getId() > since_id_pointer) ? 
+							tweets.get(0).getId() : since_id_pointer;
+				}
 			}
 			@Override
 			public void onFailure(Throwable t, JSONObject responseBody) {
 				Log.d("Twitter", "[MentionsTimeline] Json handler Failure");
-				if (!isNetworkAvailable()) {
-					List<Tweet> cached = Tweet.getAll(Tweet.Category.MENTIONS_TWEETS);
-					if (cached != null && !cached.isEmpty())
-						addAll(cached);
-				}
 			}
 		});
 		

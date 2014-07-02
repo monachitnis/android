@@ -12,8 +12,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ProgressBar;
 
 import com.myandroid.apps.BasicTwitter.DetailActivity;
 import com.myandroid.apps.BasicTwitter.R;
@@ -30,6 +32,7 @@ public class TweetsListFragment extends Fragment {
 	protected TweetArrayAdapter adapter;
 	protected PullToRefreshListView lvTimeline;
 	protected List<Tweet> tweets;
+	//protected ProgressBar pb;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,7 +53,7 @@ public class TweetsListFragment extends Fragment {
 			}
 
 		});
-
+		
 		//return layout view
 		return v;
 	}
@@ -84,5 +87,9 @@ public class TweetsListFragment extends Fragment {
 	public TweetArrayAdapter getAdapter() {
 		return adapter;
 	}
+	
+	/*protected ProgressBar getProgressBar() {
+		return pb;
+	}*/
 
 }

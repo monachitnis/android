@@ -8,9 +8,6 @@ public abstract class EndlessScrollListener implements OnScrollListener {
 	// The minimum amount of items to have below your current scroll position
     // before loading more.
     private int visibleThreshold = 5;
-    // The current offset index of data you have loaded
-    //private int currentPage = 1;
-    //private long currentIndex = 1;
     // The total number of items in the dataset after the last load
     private int previousTotalItemCount = 1;
     // True if we are still waiting for the last set of data to load.
@@ -33,7 +30,6 @@ public abstract class EndlessScrollListener implements OnScrollListener {
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		Log.d("Twitter", "totalcount="+totalItemCount);
 		// If the total item count is zero and the previous isn't, assume the
         // list is invalidated and should be reset back to initial state
         if (totalItemCount < previousTotalItemCount) {
@@ -48,7 +44,6 @@ public abstract class EndlessScrollListener implements OnScrollListener {
         // number and total item count.
         if (loading && (totalItemCount > previousTotalItemCount)) {
         	Log.d("Twitter", "GREATER, totalcount="+totalItemCount + ",previous="+previousTotalItemCount);
-        	//currentIndex = totalItemCount;
         	previousTotalItemCount = totalItemCount;
             loading = false;
         }

@@ -15,7 +15,7 @@ public class User extends Model implements Serializable {
 	private static final long serialVersionUID = 5863104542021558627L;
 	@Column(name = "Name")
 	private String name;
-	@Column(name = "User_Id")
+	@Column(name = "User_Id", unique=true, onUniqueConflict = Column.ConflictAction.IGNORE)
 	private long userId;
 	@Column(name = "Handle")
 	private String handle;

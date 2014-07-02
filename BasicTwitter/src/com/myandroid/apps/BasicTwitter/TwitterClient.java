@@ -55,6 +55,8 @@ public class TwitterClient extends OAuthBaseClient {
     	params.put("count", count + "");
     	if (sinceid > 0)
     		params.put("since_id", sinceid + "");
+    	else
+    		params.put("since_id", "1");
     	
     	Log.w("Twitter", params.toString() + " ");
     	client.get(apiUrl, params, handler); //pass null for params if no params

@@ -30,7 +30,7 @@ public class Tweet extends Model implements Serializable {
 	private static final long serialVersionUID = 8880600876124354628L;
 	@Column(name = "Body")
 	private String body;
-	@Column(name = "Tweet_Id")
+	@Column(name = "Tweet_Id", unique=true, onUniqueConflict = Column.ConflictAction.IGNORE)
 	private long tweetId;
 	@Column(name = "Timestamp")
 	private String createdAt;
