@@ -1,7 +1,5 @@
 package com.myandroid.apps.BasicTwitter;
 
-import java.util.List;
-
 import org.json.JSONObject;
 
 import android.app.ActionBar;
@@ -12,9 +10,11 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 
-import com.activeandroid.query.Delete;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.myandroid.apps.BasicTwitter.fragments.HomeTimelineFragment;
 import com.myandroid.apps.BasicTwitter.fragments.MentionsTimelineFragment;
@@ -69,24 +69,33 @@ public class TimelineActivity extends FragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_timeline, menu);
+        MenuItem actionViewItem = menu.findItem(R.id.miCompose);
+        View v = actionViewItem.getActionView();
+        Button composeActionView = (Button) v.findViewById(R.id.button1);
+        composeActionView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				TwitterApplication.getRestClient().getProfileInfo(new JsonHttpResponseHandler() {
+					@Override
+					public void onSuccess(JSONObject json) {
+						u = User.fromJson(json);
+						Log.d("Twitter", "USER="+u);
+					}
+					@Override
+					public void onFailure(Throwable arg0, JSONObject obj) {
+						Log.d("Twitter", "User profile FAILURE");
+					}
+				});
+				Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
+				i.putExtra("user", u);
+				startActivityForResult(i, 50);
+				
+			}
+        	
+        });
+        
         return true;
-	}
-	
-	public void onCompose(MenuItem mi) {
-		TwitterApplication.getRestClient().getProfileInfo(new JsonHttpResponseHandler() {
-			@Override
-			public void onSuccess(JSONObject json) {
-				u = User.fromJson(json);
-				Log.d("Twitter", "USER="+u);
-			}
-			@Override
-			public void onFailure(Throwable arg0, JSONObject obj) {
-				Log.d("Twitter", "User profile FAILURE");
-			}
-		});
-		Intent i = new Intent(this, ComposeActivity.class);
-		i.putExtra("user", u);
-		startActivityForResult(i, 50);
 	}
 	
 	@Override
@@ -105,5 +114,5 @@ public class TimelineActivity extends FragmentActivity {
 		Intent i = new Intent(this, ProfileActivity.class);
 		startActivity(i);
 	}
-
+	
 }

@@ -55,4 +55,23 @@
         android:textSize="12sp"
         android:layout_marginRight="5dp" />
 
+    <Button
+        android:id="@+id/btnFavorite"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/tvTimestamp"
+        android:layout_marginRight="50dp"
+        style="@style/FavoriteTweet" />
+    
+    <Button
+        android:id="@+id/btnReply"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/btnFavorite"
+        android:layout_toLeftOf="@+id/tvTimestamp"
+        android:layout_marginRight="5dp"
+        style="@style/ReplyTweet" />
+
 </RelativeLayout>

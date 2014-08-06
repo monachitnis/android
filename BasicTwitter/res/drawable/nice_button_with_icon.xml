@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+    	<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    		<corners android:radius="20dp"></corners>
+			<gradient android:startColor="#6bdaff" android:endColor="#64beff"/>
+		</shape>
+	</item>
+	<item android:drawable="@drawable/twitter" android:right="240dp">
+	</item>
+
+</layer-list>
