@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.android.app.mydrawingapp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <!-- <com.android.app.mydrawingapp.ShapeSelector
+        android:id="@+id/shapeSelector1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        app:shapeColor="#ff7c7e" />-->
+
+    <com.android.app.mydrawingapp.DrawingCanvas
+        android:id="@+id/drawingCanvas1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnNewPage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="47dp"
+        style="@style/CanvasBorder" />
+
+    <ImageButton
+        android:id="@+id/btnNewPage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:padding="5dp"
+        android:src="@drawable/btnnew"
+        android:onClick="onNew" />
+
+    <ImageButton
+        android:id="@+id/btnEraser"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/btnBrushSize"
+        android:padding="5dp"
+        android:src="@drawable/btneraser" />
+
+    <ImageButton
+        android:id="@+id/btnBrushSize"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/btnNewPage"
+        android:padding="5dp"
+        android:src="@drawable/btnbrush"
+        android:onClick="onBrush" />
+
+    <ImageButton
+        android:id="@+id/btnSave"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/btnEraser"
+        android:padding="5dp"
+        android:src="@drawable/btnsave" />
+
+    <ImageButton
+        android:id="@+id/btnBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/black"
+        android:onClick="onBlack" />
+
+    <ImageButton
+        android:id="@+id/btnRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnBlack"
+        android:src="@drawable/red"
+        android:onClick="onRed" />
+
+    <ImageButton
+        android:id="@+id/btnGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnRed"
+        android:src="@drawable/green"
+        android:onClick="onGreen" />
+
+    <ImageButton
+        android:id="@+id/btnBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnGreen"
+        android:src="@drawable/blue"
+        android:onClick="onBlue" />
+
+    <ImageButton
+        android:id="@+id/btnYellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnBlue"
+        android:src="@drawable/yellow"
+        android:onClick="onYellow" />
+
+    <ImageButton
+        android:id="@+id/btnBrown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnYellow"
+        android:src="@drawable/black" />
+
+</RelativeLayout>
