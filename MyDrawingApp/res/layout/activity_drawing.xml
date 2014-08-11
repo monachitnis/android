@@ -41,7 +41,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/btnBrushSize"
         android:padding="5dp"
-        android:src="@drawable/btneraser" />
+        android:src="@drawable/btneraser"
+        android:onClick="onErase" />
 
     <ImageButton
         android:id="@+id/btnBrushSize"
@@ -60,7 +61,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/btnEraser"
         android:padding="5dp"
-        android:src="@drawable/btnsave" />
+        android:src="@drawable/btnsave"
+        android:onClick="onSaveDrawing" />
 
     <ImageButton
         android:id="@+id/btnBlack"
@@ -108,11 +110,12 @@
         android:onClick="onYellow" />
 
     <ImageButton
-        android:id="@+id/btnBrown"
+        android:id="@+id/btnWhite"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/btnYellow"
-        android:src="@drawable/black" />
+        android:src="@drawable/white"
+        android:onClick="onWhite" />
 
 </RelativeLayout>

@@ -45,6 +45,10 @@ public class DrawingCanvas extends View {
 	public void setBrushSize(int brushSize) {
 		this.brushSize = brushSize;
 	}
+	
+	public List<Pair<Path, Pair<Integer, Integer>>> getPaths() {
+		return paths;
+	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
@@ -109,6 +113,11 @@ public class DrawingCanvas extends View {
 		currentPath = new Path();
 		paths = new ArrayList<Pair<Path, Pair<Integer, Integer>>>();
 		paths.add(Pair.create(currentPath, Pair.create(brushSize, color)));
+		invalidate();
+	}
+	
+	public void loadSavedDrawing(List<Pair<Path, Pair<Integer, Integer>>> paths) {
+		this.paths = paths;
 		invalidate();
 	}
 	
