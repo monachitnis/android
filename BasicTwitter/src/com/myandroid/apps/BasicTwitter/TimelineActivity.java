@@ -90,7 +90,7 @@ public class TimelineActivity extends FragmentActivity {
 				Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
 				i.putExtra("user", u);
 				startActivityForResult(i, 50);
-				
+				overridePendingTransition(R.anim.slide_down_entry, R.anim.slide_down_exit);
 			}
         	
         });
@@ -113,6 +113,7 @@ public class TimelineActivity extends FragmentActivity {
 	public void onProfile(MenuItem mi) {
 		Intent i = new Intent(this, ProfileActivity.class);
 		startActivity(i);
+		overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 	}
 	
 }

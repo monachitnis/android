@@ -12,14 +12,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ProgressBar;
 
 import com.myandroid.apps.BasicTwitter.DetailActivity;
 import com.myandroid.apps.BasicTwitter.R;
-import com.myandroid.apps.BasicTwitter.TimelineActivity;
 import com.myandroid.apps.BasicTwitter.TweetArrayAdapter;
 import com.myandroid.apps.BasicTwitter.TwitterApplication;
 import com.myandroid.apps.BasicTwitter.TwitterClient;
@@ -31,6 +28,7 @@ public class TweetsListFragment extends Fragment {
 	protected TwitterClient client;
 	protected TweetArrayAdapter adapter;
 	protected PullToRefreshListView lvTimeline;
+	//protected SwipeListView lvTimeline;
 	protected List<Tweet> tweets;
 	//protected ProgressBar pb;
 
@@ -50,6 +48,7 @@ public class TweetsListFragment extends Fragment {
 				Intent i = new Intent(getActivity(), DetailActivity.class);
 				i.putExtra("tweet", adapter.getItem(position));
 				startActivity(i);
+				getActivity().overridePendingTransition(R.anim.zoom_in, 0);
 			}
 
 		});

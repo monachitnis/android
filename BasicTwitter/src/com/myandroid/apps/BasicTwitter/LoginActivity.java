@@ -28,6 +28,7 @@ public class LoginActivity extends OAuthLoginActivity<TwitterClient> {
     public void onLoginSuccess() {
     	Intent i = new Intent(this, TimelineActivity.class);
     	startActivity(i);
+    	overridePendingTransition(R.anim.slide_up_entry, R.anim.slide_up_exit);
     	//Toast.makeText(this, "SUCCESS", Toast.LENGTH_SHORT).show();
     	
     }

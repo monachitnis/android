@@ -51,4 +51,11 @@ public class DetailActivity extends Activity {
 		i.putExtra("user", u);
 		startActivity(i);
 	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		finish();
+		overridePendingTransition(0, R.anim.zoom_out);
+	}
 }

@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.myandroid.apps.BasicTwitter.EndlessScrollListener;
+import com.myandroid.apps.BasicTwitter.listeners.OnSwipeTouchListener;
 import com.myandroid.apps.BasicTwitter.models.Tweet;
 
 import eu.erikw.PullToRefreshListView.OnRefreshListener;
@@ -54,16 +56,27 @@ public class HomeTimelineFragment extends TweetsListFragment {
 
 		});
 
-		lvTimeline.setOnRefreshListener(new OnRefreshListener() {
+		/*lvTimeline.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
 				adapter.clear();
 				populateTimeline(0, since_id_pointer);
 				lvTimeline.onRefreshComplete();
 			}
+		});*/
+		
+		lvTimeline.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+			@Override
+			public void onSwipeRight() {
+				// TODO Auto-generated method stub
+				super.onSwipeRight();
+				Toast.makeText(getActivity(), "swiped right", Toast.LENGTH_SHORT).show();
+				lvTimeline.pointToPosition(Math.round(e1.getX()), Math.round(e1.getY()))
+			}
 		});
 		//pb = getProgressBar();
 		return v;
+		
 	}
 	
 	public void populateTimeline(final long maxid, final long sinceid) {

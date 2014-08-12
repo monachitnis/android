@@ -50,14 +50,14 @@ public class MentionsTimelineFragment extends TweetsListFragment {
 
 		});
 
-		lvTimeline.setOnRefreshListener(new OnRefreshListener() {
+		/*lvTimeline.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
 				adapter.clear();
 				populateTimeline(0, since_id_pointer);
 				lvTimeline.onRefreshComplete();
 			}
-		});
+		});*/
 		return v;
 	}
 	

@@ -40,4 +40,11 @@ public class ComposeActivity extends Activity {
 		setResult(RESULT_OK, i);*/
 		finish();
 	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		finish();
+		overridePendingTransition(R.anim.slide_up_entry, R.anim.slide_up_exit);
+	}
 }
