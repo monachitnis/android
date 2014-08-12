@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -22,6 +23,8 @@ public class DrawingCanvas extends View {
 	//defaults
 	int color = Color.BLACK;
 	int brushSize = BRUSH_SIZE.SMALL.get();
+	Bitmap bitmap;
+	Canvas newCanvas;
 
 	public DrawingCanvas(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -32,6 +35,7 @@ public class DrawingCanvas extends View {
 		paths.add(Pair.create(currentPath, Pair.create(brushSize, color)));
 		setFocusable(true); //needs this explicitly
 		setFocusableInTouchMode(true);
+		newCanvas = new Canvas();
 	}
 	
 	public int getColor() {
@@ -49,15 +53,29 @@ public class DrawingCanvas extends View {
 	public List<Pair<Path, Pair<Integer, Integer>>> getPaths() {
 		return paths;
 	}
+	
+	public void setStyle(Style style) {
+		paint.setStyle(style);
+	}
+	
+	public void setBitmap(Bitmap bmp) {
+		bitmap = bmp;
+	}
+	
+	public Bitmap getBitMap() {
+		return bitmap;
+	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
+		newCanvas.setBitmap(bitmap);
 		for (Pair<Path, Pair<Integer, Integer>> path : paths) {
 			Pair<Integer, Integer> values = path.second;
 			paint.setStrokeWidth(values.first);
 			paint.setColor(values.second);
 			canvas.drawPath(path.first, paint);
+			newCanvas.drawPath(path.first, paint);
 		}
 	}
 	

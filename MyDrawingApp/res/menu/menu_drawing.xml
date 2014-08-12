@@ -5,10 +5,9 @@
         android:showAsAction="always"
         android:onClick="onSaved"
         android:title="Saved" />
-    <!-- <item
+    <item
         android:id="@+id/miShare"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="Share"
-        android:onClick="onShare"
-        android:actionProviderClass="android.widget.ShareActionProvider" /> -->
+        android:actionProviderClass="android.widget.ShareActionProvider"/>
 </menu>
